@@ -101,3 +101,65 @@
 // }
 
 // repainting(["10 ", "11 ", "4 ", "8 "]);
+
+////////////////////
+
+// function deliveryService(input) {
+//     let chicken = 10.35;
+//     let fish = 12.4;
+//     let vegetarian = 8.15;
+
+//     let delivery = 2.5;
+
+//     let chicken_num = Number(input[0]);
+//     let fish_num = Number(input[1]);
+//     let veggies = Number(input[2]);
+
+//     let ch_price = chicken * chicken_num;
+//     let fish_price = fish * fish_num;
+//     let veg = vegetarian * veggies;
+
+//     let amount = ch_price + fish_price + veg;
+//     let desert = amount * 0.2;
+
+//     let total = amount + desert + delivery;
+
+//     console.log(total);
+// }
+
+// deliveryService(["2", "4", "3"]);
+
+/////////
+
+// function equipmentAcquiring(input) {
+//     let fee = Number(input[0]);
+
+//     let trainers = 0.6 * fee;
+//     let wearings = trainers * 0.8;
+//     let ball = wearings * 0.25;
+//     let accessoires = ball * 0.2;
+
+//     let total = fee + trainers + wearings + ball + accessoires;
+
+//     console.log(total);
+// }
+
+// equipmentAcquiring(["365"]);
+
+/////////////
+
+function aquariumCalc(input) {
+    let length = Number(input[0]);
+    let width = Number(input[1]);
+    let height = Number(input[2]);
+
+    let percentage = Number(input[3]) / 100;
+
+    let volume = (length * width * height) / 1000;
+
+    let water = volume * (1 - percentage);
+
+    console.log(water);
+}
+
+aquariumCalc(["85 ", "75 ", "47 ", "17 "]);
