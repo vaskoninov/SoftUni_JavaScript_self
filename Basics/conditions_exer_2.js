@@ -276,57 +276,103 @@
 
 ///// On Time
 
-function examOnTime(input) {
-    let hour = Number(input[0]);
-    let minute = Number(input[1]);
-    let arrival_hour = Number(input[2]);
-    let arrival_minute = Number(input[3]);
+// function examOnTime(input) {
+//     let hour = Number(input[0]);
+//     let minute = Number(input[1]);
+//     let arrival_hour = Number(input[2]);
+//     let arrival_minute = Number(input[3]);
 
-    let exam_start_minutes = (hour * 60) + minute;
-    let arrival_minutes = (arrival_hour * 60) + arrival_minute;
+//     let exam_start_minutes = (hour * 60) + minute;
+//     let arrival_minutes = (arrival_hour * 60) + arrival_minute;
 
-    // console.log(exam_start_minutes);
-    // console.log(arrival_minutes);
+//     // console.log(exam_start_minutes);
+//     // console.log(arrival_minutes);
 
-    if (arrival_minutes > exam_start_minutes) {
-        console.log("Late");
-        let difference = arrival_minutes - exam_start_minutes;
-        if (difference <= 59) {
-            console.log(`${difference} minutes after the start`) 
-        } else {
-            let new_hours = Math.floor(difference / 60);
-            let new_seconds = difference % 60;
-            if (new_seconds < 10) {
-                console.log(`${new_hours}:0${new_seconds} hours after the start`)
-            } else {
-            console.log(`${new_hours}:${new_seconds} hours after the start`)
+//     if (arrival_minutes > exam_start_minutes) {
+//         console.log("Late");
+//         let difference = arrival_minutes - exam_start_minutes;
+//         if (difference <= 59) {
+//             console.log(`${difference} minutes after the start`) 
+//         } else {
+//             let new_hours = Math.floor(difference / 60);
+//             let new_seconds = difference % 60;
+//             if (new_seconds < 10) {
+//                 console.log(`${new_hours}:0${new_seconds} hours after the start`)
+//             } else {
+//             console.log(`${new_hours}:${new_seconds} hours after the start`)
+//             }
+//         }
+//     } else if (exam_start_minutes >= arrival_minutes) {
+//         let difference = exam_start_minutes - arrival_minutes;
+//         if ((exam_start_minutes === arrival_minutes) || ((exam_start_minutes - arrival_minutes) <= 30)) {
+//             console.log("On time");
+//             if (!(exam_start_minutes == arrival_minutes)) {
+//             console.log(`${difference} minutes before the start`)
+//             }
+//         } else {
+//             console.log("Early");
+//             if (difference <= 59) {
+//                 console.log(`${difference} minutes before the start`)
+//             } else {
+//                 let new_hours = Math.floor(difference / 60);
+//                 let new_seconds = difference % 60;
+//                 if (new_seconds < 10) {
+//                     console.log(`${new_hours}:0${new_seconds} hours before the start`)
+//                 } else {
+//                 console.log(`${new_hours}:${new_seconds} hours before the start`)
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// examOnTime(["11",
+//     "30",
+//     "8",
+//     "12"])
+
+/////// Ski Vacation
+
+function skiVacation(input) {
+    const room = 18;
+    const appartment = 25;
+    const president = 35;
+
+    let days = Number(input[0]) - 1;
+    let accomodation = input[1];
+    let assessment = input[2];
+
+    let cost = 0;
+
+    switch (accomodation) {
+        case "room for one person":
+            cost = days * room;
+            break;
+        case "apartment":
+            if (days < 10) {
+                cost = (days * appartment) * 0.7;
+            } else if (days >= 10 && days <= 15) {
+                cost = (days * appartment) * 0.65;
+            } else if (days > 15) {
+                cost = (days * appartment) * 0.5;
             }
-        }
-    } else if (exam_start_minutes >= arrival_minutes) {
-        let difference = exam_start_minutes - arrival_minutes;
-        if ((exam_start_minutes === arrival_minutes) || ((exam_start_minutes - arrival_minutes) <= 30)) {
-            console.log("On time");
-            if (!(exam_start_minutes == arrival_minutes)) {
-            console.log(`${difference} minutes before the start`)
+            break;
+        case "president apartment":
+            if (days < 10) {
+                cost = (days * president) * 0.9;
+            } else if (days >= 10 && days <= 15) {
+                cost = (days * president) * 0.85;
+            } else if (days > 15) {
+                cost = (days * president) * 0.8;
             }
-        } else {
-            console.log("Early");
-            if (difference <= 59) {
-                console.log(`${difference} minutes before the start`)
-            } else {
-                let new_hours = Math.floor(difference / 60);
-                let new_seconds = difference % 60;
-                if (new_seconds < 10) {
-                    console.log(`${new_hours}:0${new_seconds} hours before the start`)
-                } else {
-                console.log(`${new_hours}:${new_seconds} hours before the start`)
-                }
-            }
-        }
+            break;
     }
+    if (assessment === "positive") {
+        cost *= 1.25;
+    } else {
+        cost *= 0.9;
+    }
+    console.log(cost.toFixed(2));
 }
 
-examOnTime(["11",
-    "30",
-    "8",
-    "12"])
+skiVacation(["14", "apartment", "positive"]);
