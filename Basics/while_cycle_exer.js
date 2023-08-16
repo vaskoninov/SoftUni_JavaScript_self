@@ -164,3 +164,104 @@
 
 /////// Coins
 
+// function coins(input) {
+//     let change = Number([input[0]]);
+//     let inStot = Math.floor(change * 100);
+//     let counterCoins = 0;
+
+//     while (inStot > 0) {
+//         if (inStot >= 200) {
+//             inStot -= 200;
+//             counterCoins++;
+//         } else if (inStot >= 100) {
+//             inStot -= 100;
+//             counterCoins++;
+//         } else if (inStot >= 50) {
+//             inStot -= 50;
+//             counterCoins++;
+//         } else if (inStot >= 20) {
+//             inStot -= 20;
+//             counterCoins++;
+//         } else if (inStot >= 10) {
+//             inStot -= 10;
+//             counterCoins++;
+//         } else if (inStot >= 5) {
+//             inStot -= 5;
+//             counterCoins++;
+//         } else if (inStot >= 2) {
+//             inStot -= 2;
+//             counterCoins++;
+//         } else if (inStot >= 1) {
+//             inStot -= 1;
+//             counterCoins++;
+//         }
+//     }
+
+//     console.log(counterCoins);
+// }
+// coins(["1.23"])
+// coins(["2.73"])
+
+//// Cake
+
+// function caker(input) {
+//     let a = Number(input[0]);
+//     let b = Number(input[1]);
+
+//     let size = a * b;
+
+//     let i = 2;
+//     while (true) {
+//         let take = input[i]
+//         if (take === "STOP") {
+//             console.log(`${size} pieces are left.`)
+//             break;
+//         }
+//         take = Number(take);
+//         size -= take;
+
+//         if (size < 0) {
+//             console.log(`No more cake left! You need ${Math.abs(size)} pieces more.`)
+//             break;
+//         }
+//         i++;
+//     }
+// }
+// caker(["10",
+//     "2",
+//     "2",
+//     "4",
+//     "6",
+//     "STOP"]);
+
+////// Transition
+
+function transportation(input) {
+    let a = Number(input[0]);
+    let b = Number(input[1]);
+    let c = Number(input[2]);
+    let size = a * b * c;
+
+    let i = 3;
+    while (true) {
+        let info = input[i];
+        if (info === "Done") {
+            console.log(`${size} Cubic meters left.`);
+            break;
+        }
+        info = Number(info);
+        size -= info;
+        if (size < 0) {
+            console.log(`No more free space! You need ${Math.abs(size)} Cubic meters more.`);
+            break;
+        }
+        i++;
+    }
+}
+
+transportation(["10",
+    "1",
+    "2",
+    "4",
+    "6",
+    "Done"]);
