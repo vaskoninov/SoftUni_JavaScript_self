@@ -218,3 +218,37 @@
 //     console.log(`Final pyramid height: ${Math.floor(height * increment)}`)
 // }
 // calculatePyramid(11, 1)
+
+///// Bitcoin
+
+function bitcoinBuy(input) {
+    const bit = 11949.16;
+    let days = input.length;
+    let first_day = null;
+    let bitcoins = 0;
+    let money = 0;
+
+    for (let i = 1; i <= days; i++) {
+        let currentGold = input[i - 1];
+        if (i % 3 === 0) {
+            currentGold *= 0.7;
+        }
+        let currentMoney = currentGold * 67.51;
+        money += currentMoney;
+        if (money >= bit) {
+            if (first_day === null) first_day = i;
+            while (money >= bit) {
+                money -= bit;
+                bitcoins += 1;
+            }
+        }
+    }
+    console.log(`Bought bitcoins: ${bitcoins}`);
+    if (first_day !== null) {
+        console.log(`Day of the first purchased bitcoin: ${first_day}`);
+    }
+    console.log(`Left money: ${money.toFixed(2)} lv.`);
+}
+
+// bitcoinBuy([100, 200, 300]);
+bitcoinBuy([3124.15, 504.212, 2511.124]);
