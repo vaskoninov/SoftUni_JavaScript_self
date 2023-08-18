@@ -48,11 +48,65 @@
 
 ////// Gramophone
 
-function getLength(band, album, song) {
-    let duration = ((band.length * album.length) * song.length / 2);
-    let rotations = Math.ceil(duration / 2.5);
+// function getLength(band, album, song) {
+//     let duration = ((band.length * album.length) * song.length / 2);
+//     let rotations = Math.ceil(duration / 2.5);
 
-    console.log(`The plate was rotated ${rotations} times.`);
+//     console.log(`The plate was rotated ${rotations} times.`);
+// }
+// getLength('Black Sabbath', 'Paranoid',
+//     'War Pigs');
+
+////// Required reading
+
+// function calculateHoursReading(pages, pages_per_hour, days) {
+//     let result = (pages / pages_per_hour) / days;
+//     console.log(result);
+// }
+
+////// Centuries to Minutes
+
+// function solve(centuries) {
+//     const year = 365.2422;
+
+//     let years = centuries * 100;
+//     let days = Math.trunc(years * year);
+//     let hours = days * 24;
+//     let minutes = hours * 60;
+
+//     console.log(`${centuries} centuries = ${years} years = ${days} days = ${hours} hours = ${minutes} minutes`);
+// }
+// solve(1);
+
+/////// Special Numbers
+
+// function solve(n) {
+//     for (let i = 1; i <= n; i++) {
+//         let sum = 0;
+//         let toCheck = i.toString();
+//         for (let j = 0; j < toCheck.length; j++) {
+//             sum += Number(toCheck[j]);
+//         }
+//         ((sum === 5) || (sum === 7) || (sum === 11)) ?
+//             console.log(`${i} -> True`) : console.log(`${i} -> False`);
+//     }
+// }
+// solve(20);
+
+///// Triple Latin Letters
+
+function getTrippled(number) {
+    let n = Number(number);
+
+    for (let i = 0; i < n; i++) {
+        let let_i = String.fromCharCode(97 + i);
+        for (let j = 0; j < n; j++) {
+            let let_j = String.fromCharCode(97 + j);
+            for (let k = 0; k < n; k++) {
+                let let_k = String.fromCharCode(97 + k);
+                console.log(`${let_i}${let_j}${let_k}`);
+            }
+        }
+    }
 }
-getLength('Black Sabbath', 'Paranoid',
-    'War Pigs');
+getTrippled(3)
