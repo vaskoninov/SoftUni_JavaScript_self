@@ -173,7 +173,4 @@
 // division = calculate(a, b)
 // print(f"{division:.2f}")
 
-function isAlphanumeric(str) {
-    return /^[a-zA-Z0-9]+$/.test(str);
-}
 
