@@ -1,6 +1,9 @@
 ///// Sum First and Last El
 
 function sumFirstLast(sequence) {
-    console.log(sequence[0] + sequence[sequence.length - 1]);
+    first = sequence.shift()
+    last = sequence.pop()
+
+    console.log(first + last);
 }
 sumFirstLast([20, 30, 40]);
