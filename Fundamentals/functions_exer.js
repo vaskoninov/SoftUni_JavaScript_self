@@ -71,17 +71,104 @@
 
 ///// Palindrome
 
-function checkPalindrome(seq) {
-    for (let number of seq) {
-        let numberAsText = String(number);
-        let list = numberAsText.split("").reverse().join("");
+// function checkPalindrome(seq) {
+//     for (let number of seq) {
+//         let numberAsText = String(number);
+//         let list = numberAsText.split("").reverse().join("");
 
-        if (number === Number(list)) {
-            console.log(true)
-        } else {
-            console.log(false)
-        }
-    }
-}
+//         if (number === Number(list)) {
+//             console.log(true)
+//         } else {
+//             console.log(false)
+//         }
+//     }
+// }
 
-checkPalindrome([131])
+// checkPalindrome([131])
+
+// #######################
+// #
+// # password = input()
+// #
+// #
+// # def validate_password(password):
+// #     length = 6 <= len(password) <= 10
+// #     alphanum = password.isalnum()
+// #     digits = 0
+// #     messages = []
+// #     for ch in password:
+// #         if ch.isdigit():
+// #             digits += 1
+// #     if length and alphanum and digits >= 2:
+// #         messages.append("Password is valid")
+// #     else:
+// #         if not length:
+// #             messages.append("Password must be between 6 and 10 characters")
+// #         if not alphanum:
+// #             messages.append("Password must consist only of letters and digits")
+// #         if digits < 2:
+// #             messages.append("Password must have at least 2 digits")
+// #     return messages
+// #
+// #
+// # validation = validate_password(password)
+// #
+// # for message in validation:
+// #     print(message)
+
+// #####################
+
+// # number = int(input())
+// #
+// # def get_aliquot_sum(number):
+// #     summa = 0
+// #     for i in range(1, number):
+// #         if number % i == 0:
+// #             summa += i
+// #     if summa == number:
+// #         return 'We have a perfect number!'
+// #     else:
+// #         return "It's not so perfect."
+// #
+// # result = get_aliquot_sum(number)
+// # print(result)
+// ######################
+// # number = int(input())
+// #
+// # def get_loading_bar(number):
+// #     bar = []
+// #     percents = number // 10
+// #     for _ in range(1, percents + 1):
+// #         bar.append("%")
+// #     if number < 100:
+// #         remaining = (100 - number) // 10
+// #         for _ in range(1, remaining + 1):
+// #             bar.append(".")
+// #     return bar
+// #
+// # loading_bar = get_loading_bar(number)
+// #
+// # if number < 100:
+// #     print(f"{number}%", end=" ")
+// #     print(f'[{"".join(loading_bar)}]')
+// #     print("Still loading...")
+// # else:
+// #     print(f"{number}% Complete!")
+// #     print(f'[{"".join(loading_bar)}]')
+
+// #######################
+// import math
+
+// a = int(input())
+// b = int(input())
+
+
+// def calculate(a, b):
+//     fac_a = math.factorial(a)
+//     fac_b = math.factorial(b)
+//     result = fac_a / fac_b
+//     return result
+
+
+// division = calculate(a, b)
+// print(f"{division:.2f}")
