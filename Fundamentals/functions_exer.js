@@ -86,53 +86,89 @@
 
 // checkPalindrome([131])
 
-// #######################
-// #
-// # password = input()
-// #
-// #
-// # def validate_password(password):
-// #     length = 6 <= len(password) <= 10
-// #     alphanum = password.isalnum()
-// #     digits = 0
-// #     messages = []
-// #     for ch in password:
-// #         if ch.isdigit():
-// #             digits += 1
-// #     if length and alphanum and digits >= 2:
-// #         messages.append("Password is valid")
-// #     else:
-// #         if not length:
-// #             messages.append("Password must be between 6 and 10 characters")
-// #         if not alphanum:
-// #             messages.append("Password must consist only of letters and digits")
-// #         if digits < 2:
-// #             messages.append("Password must have at least 2 digits")
-// #     return messages
-// #
-// #
-// # validation = validate_password(password)
-// #
-// # for message in validation:
-// #     print(message)
+////////////////
+/// Password Validator
 
-// #####################
+// function validatePassword(pass) {
+//     let message = [];
 
-// # number = int(input())
-// #
-// # def get_aliquot_sum(number):
-// #     summa = 0
-// #     for i in range(1, number):
-// #         if number % i == 0:
-// #             summa += i
-// #     if summa == number:
-// #         return 'We have a perfect number!'
-// #     else:
-// #         return "It's not so perfect."
-// #
-// # result = get_aliquot_sum(number)
-// # print(result)
-// ######################
+//     function checkLength(text) {
+//         return (text.length >= 6 && text.length <= 10);
+//     }
+
+//     function isAlphanumeric(text) {
+//         return /^[a-zA-Z0-9]+$/.test(text);
+//     }
+
+//     function checkTwoDigits(text) {
+//         let check = 0;
+//         let nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+//         for (let i = 0; i < text.length; i++) {
+//             if (nums.includes(Number(text[i]))) { check++ }
+//         }
+//         return (check >= 2);
+//     }
+//     let hasLength = false;
+//     let isAlNum = false;
+//     let hasTwoDigits = false;
+//     if (checkLength(pass)) {
+//         hasLength = true;
+//     } else {
+//         message.push("Password must be between 6 and 10 characters");
+//     }
+//     if (isAlphanumeric(pass)) {
+//         isAlNum = true;
+//     } else {
+//         message.push("Password must consist only of letters and digits")
+//     }
+//     if (checkTwoDigits(pass)) {
+//         hasTwoDigits = true;
+//     } else {
+//         message.push("Password must have at least 2 digits")
+//     }
+
+//     if (hasLength && isAlNum && hasTwoDigits) {
+//         return "Password is valid";
+//     } else {
+//         return message.join("\n");
+//     }
+// }
+// console.log(validatePassword("LogIn"))
+
+////// NxN Matrix
+
+// function printMatrix(n) {
+//     let matrix = [];
+
+//     for (let i = 0; i < n; i++) {
+//         let temp = [];
+//         for (let j = 0; j < n; j++) {
+//             temp.push(n)
+//         }
+//         matrix.push(temp.join(" "))
+//     }
+//     return matrix.join("\n")
+// }
+
+// console.log((printMatrix(3)))
+
+//// Aliquot
+
+// function getAliquot(num) {
+//     let sum = 0;
+//     for (let i = 1; i < num; i++) {
+//         if (!(num % i)) {
+//             sum += i
+//         }
+//     }
+//     if (sum === num) {
+//         return "We have a perfect number!"
+//     } else {
+//         return "It's not so perfect."
+//     }
+// }
+// console.log(getAliquot(6))
+////////////////////////
 // # number = int(input())
 // #
 // # def get_loading_bar(number):
@@ -157,20 +193,53 @@
 // #     print(f'[{"".join(loading_bar)}]')
 
 // #######################
-// import math
 
-// a = int(input())
-// b = int(input())
+//////////Loading Bar
 
+// function loadBar(number) {
+//     let bar = [];
+//     let percents = Math.floor(number / 10);
+//     let remaining = 0;
+//     for (let i = 1; i <= percents; i++) {
+//         bar.push("%");
+//     }
+//     if (number < 100) {
+//         remaining = Math.floor((100 - number) / 10);
+//     }
+//     for (let i = 1; i <= remaining; i++) {
+//         bar.push(".")
+//     }
+//     let result = [];
+//     if (number < 100) {
+//         result.push(`${number}% [${bar.join("")}]`);
+//         result.push("Still loading...");
+//         return result.join("\n")
+//     } else {
+//         result.push("100% Complete!");
+//         result.push(`[${bar.join("")}]`);
+//         return result.join("\n")
+//     }
+// }
 
-// def calculate(a, b):
-//     fac_a = math.factorial(a)
-//     fac_b = math.factorial(b)
-//     result = fac_a / fac_b
-//     return result
+// console.log(loadBar(100));
 
+/////////////// Factorial Division
 
-// division = calculate(a, b)
-// print(f"{division:.2f}")
+function factDiv(a, b) {
 
+    function factorial(num) {
+        if (num < 0)
+            return -1;
+        else if (num == 0)
+            return 1;
+        else {
+            return (num * factorial(num - 1));
+        }
+    }
+    let facA = factorial(a);
+    let facB = factorial(b);
 
+    result = facA / facB;
+    return result.toFixed(2);
+}
+console.log(factDiv(5, 2))
