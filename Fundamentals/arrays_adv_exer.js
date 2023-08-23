@@ -182,3 +182,76 @@
 // );
 
 ////// Gladiator Equipment
+
+// function gEquipment(sequence) {
+//     let inventory = sequence.shift().split(" ");
+
+//     for (el of sequence) {
+//         let [command, part] = el.split(" ");
+
+//         if (command === "Buy") {
+//             if (!(inventory.includes(part))) inventory.push(part);
+//         }
+//         if (command === "Trash") {
+//             if (inventory.includes(part)) {
+//                 let index = inventory.indexOf(part);
+//                 inventory.splice(index, 1);
+//             }
+//         }
+//         if (command === "Repair") {
+//             if (inventory.includes(part)) {
+//                 let index = inventory.indexOf(part);
+//                 let temp = inventory.splice(index, 1);
+//                 inventory.push(temp);
+//             }
+//         }
+//         if (command === 'Upgrade') {
+//             let [piece, upgrade] = part.split("-");
+//             if (inventory.includes(piece)) {
+//                 let index = inventory.indexOf(piece);
+//                 let text = piece.concat(":", upgrade);
+//                 inventory.splice(index + 1, 0, text);
+//             }
+//         }
+//     }
+//     console.log(inventory.join(" "));
+// }
+// gEquipment(['SWORD Shield Spear',
+//     'Buy Bag',
+//     'Trash Shield',
+//     'Repair Spear',
+//     'Upgrade SWORD-Steel']
+// );
+// gEquipment(['SWORD Shield Spear',
+//     'Trash Bow',
+//     'Repair Shield',
+//     'Upgrade Helmet-V']
+// );
+
+
+///////// Build A Wall
+
+function buildWall(parts) {
+    let numbered = parts.map(Number);
+    const completed = 30;
+    const price = 1900;
+    let dailyYards = [];
+
+    let yards = 0;
+
+    while (true) {
+        if (numbered.every((a) => a === completed)) break;
+        let daily = 0;
+        for (let i = 0; i < numbered.length; i++) {
+            if (numbered[i] === completed) continue;
+            daily += 195;
+            numbered[i]++;
+        }
+        dailyYards.push(daily);
+        yards += daily;
+    }
+    console.log(dailyYards.join(", "));
+    let total = yards * price;
+    console.log(`${total} pesos`)
+}
+buildWall([17]);
