@@ -70,56 +70,141 @@
 
 //// Movies
 
-function storeMovies(list) {
-    let movies = [];
+// function storeMovies(list) {
+//     let movies = [];
 
-    for (let i = 0; i < list.length; i++) {
-        let info = list[i].split(" ");
-        if (info[0] === "addMovie") {
-            let name = info.splice(1).join(" ");
-            movies.push({ name });
-        } else if (info.includes("onDate")) {
-            info.splice(info.indexOf("onDate"), 1);
-            let date = info.pop();
-            let name = info.join(" ");
-            let found = false;
-            for (let movie of movies) {
-                if (movie.name === name) {
-                    if (!(movie.hasOwnProperty(date))) movie.date = date;
-                    found = true;
-                    break;
-                }
-            }
-            // if (!(found)) movies.push({ name, date });
-        } else if (info.includes("directedBy")) {
-            let name = info.slice(0, info.indexOf("directedBy")).join(" ");
-            let director = info.slice(info.indexOf("directedBy") + 1, info.length).join(" ")
-            let found = false;
-            for (let movie of movies) {
-                if (movie.name === name) {
-                    if (!(movie.hasOwnProperty(director))) movie.director = director;
-                    found = true;
-                    break;
-                }
-            }
-            // if (!(found)) movies.push({ name, director });
-        }
-    }
-    for (let movie of movies) {
-        if (movie.hasOwnProperty("name") && movie.hasOwnProperty("date") && movie.hasOwnProperty("director")) {
-            console.log(JSON.stringify(movie))
-        }
-    }
-}
+//     for (let i = 0; i < list.length; i++) {
+//         let info = list[i].split(" ");
+//         if (info[0] === "addMovie") {
+//             let name = info.splice(1).join(" ");
+//             movies.push({ name });
+//         } else if (info.includes("onDate")) {
+//             info.splice(info.indexOf("onDate"), 1);
+//             let date = info.pop();
+//             let name = info.join(" ");
+//             let found = false;
+//             for (let movie of movies) {
+//                 if (movie.name === name) {
+//                     if (!(movie.hasOwnProperty(date))) movie.date = date;
+//                     found = true;
+//                     break;
+//                 }
+//             }
+//             // if (!(found)) movies.push({ name, date });
+//         } else if (info.includes("directedBy")) {
+//             let name = info.slice(0, info.indexOf("directedBy")).join(" ");
+//             let director = info.slice(info.indexOf("directedBy") + 1, info.length).join(" ")
+//             let found = false;
+//             for (let movie of movies) {
+//                 if (movie.name === name) {
+//                     if (!(movie.hasOwnProperty(director))) movie.director = director;
+//                     found = true;
+//                     break;
+//                 }
+//             }
+//             // if (!(found)) movies.push({ name, director });
+//         }
+//     }
+//     for (let movie of movies) {
+//         if (movie.hasOwnProperty("name") && movie.hasOwnProperty("date") && movie.hasOwnProperty("director")) {
+//             console.log(JSON.stringify(movie))
+//         }
+//     }
+// }
 
-storeMovies([
-    'addMovie Fast and Furious',
-    'addMovie Godfather',
-    'Inception directedBy Christopher Nolan',
-    'Godfather directedBy Francis Ford Coppola',
-    'Godfather onDate 29.07.2018',
-    'Fast and Furious onDate 30.07.2018',
-    'Batman onDate 01.08.2018',
-    'Fast and Furious directedBy Rob Cohen'
-]
-);
+// storeMovies([
+//     'addMovie Fast and Furious',
+//     'addMovie Godfather',
+//     'Inception directedBy Christopher Nolan',
+//     'Godfather directedBy Francis Ford Coppola',
+//     'Godfather onDate 29.07.2018',
+//     'Fast and Furious onDate 30.07.2018',
+//     'Batman onDate 01.08.2018',
+//     'Fast and Furious directedBy Rob Cohen'
+// ]
+// );
+
+/////// Inventory
+
+// function registerHeroes(list) {
+//     let heroes = [];
+
+//     class Hero {
+//         constructor(name, level, items) {
+//             this.name = name;
+//             this.level = level;
+//             this.items = items;
+//         }
+//         presentation() {
+//             let result = `Hero: ${this.name}\nlevel => ${this.level}\nitems => ${this.items}`
+//             console.log(result)
+//         }
+//     }
+
+//     for (let el of list) {
+//         let [name, level, items] = el.split(" / ");
+//         heroes.push(new Hero(name, Number(level), items));
+//     }
+
+//     heroes = heroes.sort((a, b) => a.level - b.level)
+
+//     for (let hero of heroes) {
+//         hero.presentation()
+//     }
+
+// }
+
+// registerHeroes([
+//     'Isacc / 25 / Apple, GravityGun',
+//     'Derek / 12 / BarrelVest, DestructionSword',
+//     'Hes / 1 / Desolator, Sentinel, Antara'
+// ]);
+
+//// Make a Dict
+
+// function makeDict(list) {
+//     let dict = [];
+
+//     for (let definition of list) {
+//         let parsedDefinition = JSON.parse(definition);
+//         let toInsert = {};
+//         for (let [key, value] of Object.entries(parsedDefinition)) {
+//             toInsert = {
+//                 "Term": key,
+//                 "Definition": value,
+//             };
+//         }
+
+//         if (dict.length === 0) {
+//             dict.push(toInsert);
+//             continue;
+//         }
+
+//         let updated = false;
+              
+//         for (let item of dict) {
+//             if (item["Term"] === toInsert["Term"]) {
+//                 item["Definition"] = toInsert["Definition"];
+//                 updated = true;
+//                 break;
+//             }
+//         }
+
+//         if (!(updated)) dict.push(toInsert);
+
+//     }
+
+//     dict = dict.sort((a, b) => a.Term.localeCompare(b.Term));
+//     for (let item of dict) {
+//         console.log(`Term: ${item.Term} => Definition: ${item.Definition}`)
+//     }
+// }
+
+// makeDict([
+//     '{"Coffee":"A hot drink made from the roasted and ground seeds(coffee beans) of a tropical shrub."}',
+//     '{"Bus":"A large motor vehicle carrying passengers by road, typically one serving the public on a fixed route and for a fare."}',
+//     '{"Boiler":"A fuel-burning apparatus or container for heating water."}',
+//     '{"Tape":"A narrow strip of material, typically used to hold or fasten something."}',
+//     '{"Microphone":"An instrument for converting sound waves into electrical energy variations which may then be amplified,transmitted, or recorded."}'
+// ]
+// );
