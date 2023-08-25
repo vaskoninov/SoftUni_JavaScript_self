@@ -181,7 +181,7 @@
 //         }
 
 //         let updated = false;
-              
+
 //         for (let item of dict) {
 //             if (item["Term"] === toInsert["Term"]) {
 //                 item["Definition"] = toInsert["Definition"];
@@ -208,3 +208,110 @@
 //     '{"Microphone":"An instrument for converting sound waves into electrical energy variations which may then be amplified,transmitted, or recorded."}'
 // ]
 // );
+
+////// Class Vehicle
+
+// class Vehicle {
+//     constructor(type, model, parts, fuel) {
+//         this.type = type;
+//         this.model = model;
+//         this.parts = {
+//             engine: parts.engine,
+//             power: parts.engine,
+//             quality: parts.engine * parts.power,
+//         };
+//         this.fuel = fuel;
+//     }
+//     drive(expenses) {
+//         this.fuel -= expenses;
+//     }
+// }
+
+// let parts = { engine: 6, power: 100 };
+// let vehicle = new Vehicle('a', 'b', parts, 200);
+// vehicle.drive(100);
+// console.log(vehicle.fuel);
+// console.log(vehicle.parts.quality);
+
+///// Class Storage
+
+// class Storage {
+
+//     constructor(capacity){
+//         this.capacity = capacity;
+//         this.storage = [];
+//         this.totalCost = 0;
+//     }
+//     addProduct(product) {
+//         if (this.capacity > 0) {
+//             this.storage.push(product);
+//             this.totalCost += product.price * product.quantity;
+//             this.capacity -= product.quantity;
+//         }
+//     }
+//     getProducts() {
+//         let result = []
+//         for (let product of this.storage) {
+//             result.push(JSON.stringify(product))
+//         }
+//         return result.join("\n");
+//     }
+
+// }
+
+// let productOne = {name: 'Cucamber', 
+// price: 1.50, quantity: 15};
+// let productTwo = {name: 'Tomato', 
+// price: 0.90, quantity: 25};
+// let productThree = {name: 'Bread', 
+// price: 1.10, quantity: 8};
+// let storage = new Storage(50);
+// storage.addProduct(productOne);
+// storage.addProduct(productTwo);
+// storage.addProduct(productThree);
+// console.log(storage.getProducts());
+// console.log(storage.capacity);
+// console.log(storage.totalCost);
+
+//// Catalogue
+
+function sortCatalogue(list) {
+    let catalogue = [];
+
+    for (let item of list) {
+        item = item.split(" : ");
+        let entry = {
+            name: item[0],
+            quantity: Number(item[1]),
+        };
+        catalogue.push(entry);
+    }
+    catalogue.sort((a, b) => a.name.localeCompare(b.name));
+
+    let result = [];
+
+    for (let entry of catalogue) {
+        let name = entry.name;
+        let value = entry.quantity;
+        let startsWithLetter = name[0];
+        if (result.includes(startsWithLetter)) {
+            result.push(`  ${name}: ${value}`)
+        } else {
+            startsWithLetter = name[0];
+            result.push(startsWithLetter);
+            result.push(`  ${name}: ${value}`)
+        }
+    }
+    console.log(result.join("\n"))
+}
+sortCatalogue([
+    'Appricot : 20.4',
+    'Fridge : 1500',
+    'TV : 1499',
+    'Deodorant : 10',
+    'Boiler : 300',
+    'Apple : 1.25',
+    'Anti-Bug Spray : 15',
+    'T-Shirt : 10'
+]
+);
