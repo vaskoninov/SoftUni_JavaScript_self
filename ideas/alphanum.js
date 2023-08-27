@@ -15,3 +15,9 @@ function isAlphanumeric(str) {
 function isAlphanumeric(str) {
     return str.search(/^[a-zA-Z0-9]+$/) !== -1;
 }
+
+//// Contains Numbers
+
+function containsNumbers(str) {
+    return /\d/.test(str);
+}
