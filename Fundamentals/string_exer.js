@@ -79,5 +79,39 @@
 //     console.log(trimmed.join(""));
 // }
 // removeRepeatingChars('aaaaabbbbbcdddeeeedssaa');
+/////
+////// Split
+// function splitByCapital(strings) {
+//     let splitted = [];
+//     let index = 0;
 
-function splitByCapital(string);
+//     for (let i = 1; i < strings.length; i++) {
+//         if (strings.charCodeAt(i) >= 65 && strings.charCodeAt(i) <= 90) {
+//             splitted.push(strings.substring(index, i));
+//             index = i;
+//         }
+//     }
+
+//     splitted.push(strings.substring(index, strings.length));
+//     console.log(splitted.join(", "));
+
+// }
+// splitByCapital('SplitMeIfYouCanHaHaYouCantOrYouCan');
+
+///// Cut Revers
+
+function cutReverse(string) {
+    let result = [];
+
+    let middle = string.length / 2;
+
+    result.push(string.substring(0, middle));
+    result.push(string.substring(middle, string.length));
+
+    let reversed = [];
+    result.forEach((a) => reversed.push(a.split("").reverse().join("")));
+
+    console.log(reversed.join("\n"));
+}
+
+cutReverse('tluciffiDsIsihTgnizamAoSsIsihT');

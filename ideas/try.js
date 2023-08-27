@@ -16,6 +16,10 @@
 // let x = "key";
 // console.log(ass_arr[x](8));
 
-let list = ['HTTbwRmM', 'SVQXQCbc', '7IK9Yo0h', '9NoBUajQ', 'Ce8vwPmE', 'tSzE5t0p'];
+// let list = ['HTTbwRmM', 'SVQXQCbc', '7IK9Yo0h', '9NoBUajQ', 'Ce8vwPmE', 'tSzE5t0p'];
 
-console.log(list.sort());
+// console.log(list.sort());
+
+let string = "Hello World";
+
+console.log(string.indexOf("o", 5));
