@@ -148,30 +148,64 @@
 
 /////// Pass Generator
 
-function generatePass(list) {
-    let stringPassRaw = list[0].concat(list[1]);
+// function generatePass(list) {
+//     let stringPassRaw = list[0].concat(list[1]);
 
-    let key = list[2];
-    let keyLength = key.length;
-    let counter = 0;
-    let vowels = 'aouei';
+//     let key = list[2];
+//     let keyLength = key.length;
+//     let counter = 0;
+//     let vowels = 'aouei';
 
-    for (let i = 0; i < stringPassRaw.length; i++) {
-        if (vowels.includes(stringPassRaw[i])) {
-            let keyChar = counter % keyLength;
-            stringPassRaw = stringPassRaw.replace(stringPassRaw[i], key[keyChar].toUpperCase());
-            counter++;
-        }
-    }
+//     for (let i = 0; i < stringPassRaw.length; i++) {
+//         if (vowels.includes(stringPassRaw[i])) {
+//             let keyChar = counter % keyLength;
+//             stringPassRaw = stringPassRaw.replace(stringPassRaw[i], key[keyChar].toUpperCase());
+//             counter++;
+//         }
+//     }
 
-    stringPassRaw = stringPassRaw.split("").reverse().join("");
+//     stringPassRaw = stringPassRaw.split("").reverse().join("");
 
-    console.log(`Your generated password is ${stringPassRaw}`);
+//     console.log(`Your generated password is ${stringPassRaw}`);
+
+// }
+// generatePass([
+//     'easymoneyeazylife',
+//     'atleasttencharacters',
+//     'absolute',
+// ]
+// );
+
+///// *Letters Change Numbers
+
+function lettersChangeNumbers(string) {
+    let expressions = string.split(" ").filter(a => a !== "");
     
+    let sum = 0;
+
+    let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+    for (let exp of expressions) {
+        let num = Number(exp.slice(1, exp.length - 1));
+        let a = exp[0];
+        let b = exp[exp.length - 1];
+        let temp = 0;
+
+        if (a.charCodeAt(0) >= 65 && a.charCodeAt(0) <= 90) {
+            temp = num / (alphabet.indexOf(a.toLowerCase()) + 1)
+        } else {
+            temp = num * (alphabet.indexOf(a.toLowerCase()) + 1)
+        }
+
+        if (b.charCodeAt(0) >= 65 && b.charCodeAt(0) <= 90) {
+            temp -= (alphabet.indexOf(b.toLowerCase()) + 1)
+        } else {
+            temp += (alphabet.indexOf(b.toLowerCase()) + 1)
+        }
+
+        sum += temp;
+
+    }
+    console.log(sum.toFixed(2))
 }
-generatePass([
-    'easymoneyeazylife',
-    'atleasttencharacters',
-    'absolute',
-]
-);
+lettersChangeNumbers('P34562Z q2576f   H456z');
