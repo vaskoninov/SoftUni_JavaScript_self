@@ -100,18 +100,78 @@
 
 ///// Cut Revers
 
-function cutReverse(string) {
-    let result = [];
+// function cutReverse(string) {
+//     let result = [];
 
-    let middle = string.length / 2;
+//     let middle = string.length / 2;
 
-    result.push(string.substring(0, middle));
-    result.push(string.substring(middle, string.length));
+//     result.push(string.substring(0, middle));
+//     result.push(string.substring(middle, string.length));
 
-    let reversed = [];
-    result.forEach((a) => reversed.push(a.split("").reverse().join("")));
+//     let reversed = [];
+//     result.forEach((a) => reversed.push(a.split("").reverse().join("")));
 
-    console.log(reversed.join("\n"));
+//     console.log(reversed.join("\n"));
+// }
+
+// cutReverse('tluciffiDsIsihTgnizamAoSsIsihT');
+
+/// Hard Words
+
+// function replaceWords(list) {
+//     let text = list[0];
+//     let words = list[1];
+//     let index = 0
+
+//     for (let i = 0; i < text.length; i++) {
+//         if (text[i] === "_") {
+//             index = i;
+//             while (text[i] === "_") {
+//                 i++
+//             }
+
+//             let toReplace = i - index;
+//             let word = null;
+//             for (let item of words) {
+//                 if (item.length === toReplace) {
+//                     word = item;
+//                 }
+//             }
+//             text = text.replace(text.substring(index, i), word)
+//             index = i - index;
+//         }
+//     }
+//     console.log(text)
+// }
+// replaceWords(['Hi, grandma! I\'m so ____ to write to you. ______ the winter vacation, so _______ things happened.My dad bought me a sled.Mom started a new job as a __________. My brother\'s ankle is ________, and now it bothers me even more. Every night Mom cooks ___ on your recipe because it is the most delicious.I hope this year Santa will _____ me a robot.',
+//     ['pie', 'bring', 'glad', 'During', 'amazing', 'pharmacist', 'sprained']]);
+
+/////// Pass Generator
+
+function generatePass(list) {
+    let stringPassRaw = list[0].concat(list[1]);
+
+    let key = list[2];
+    let keyLength = key.length;
+    let counter = 0;
+    let vowels = 'aouei';
+
+    for (let i = 0; i < stringPassRaw.length; i++) {
+        if (vowels.includes(stringPassRaw[i])) {
+            let keyChar = counter % keyLength;
+            stringPassRaw = stringPassRaw.replace(stringPassRaw[i], key[keyChar].toUpperCase());
+            counter++;
+        }
+    }
+
+    stringPassRaw = stringPassRaw.split("").reverse().join("");
+
+    console.log(`Your generated password is ${stringPassRaw}`);
+    
 }
-
-cutReverse('tluciffiDsIsihTgnizamAoSsIsihT');
+generatePass([
+    'easymoneyeazylife',
+    'atleasttencharacters',
+    'absolute',
+]
+);
